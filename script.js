@@ -131,7 +131,8 @@ function removeitem () {
  deletebutton[i].onclick=function() {
      this.parentNode.remove();
      mycart-=1;
-     removecount-=1;
+     removecount+=1;
+     console.log(removecount);
      updatemycart();
      runningtotal-=parseFloat(price);
      grandtotal();
