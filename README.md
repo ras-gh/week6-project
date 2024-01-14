@@ -12,5 +12,5 @@ manage to work out a way of accessing the price which was grouped with other dat
 The problem was that I did not know how to get the price data from the parent element which was dynamically created.
 For that reason I could not update the grand total at the bottom of the cart unless I calculated for a price which remained the same for all items.  I also did not know how to access and modify
  the quantity figure which was dynamically created inside a parent paragraph containing other data as well.
- Unfortunately I ran out of time. I might have worked out how to do the above but it would probably take a lot more time.
+ I will probably continue working on this project to improve it further.
  
