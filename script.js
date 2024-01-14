@@ -6,7 +6,7 @@ const carnames = ["Black-Ferrari","Drag-Racer","Bullit-Car","Dragster", "Estate-
 //Create an array of the corresponding prices for each item
 const newvalue= document.getElementById("new");
 
-const carprices = ["19.95", "14.95", "17.95", "18.95", "14.95", "17.95", "13.95", "12.95","18.95", "19.95", "17.95", "19.95", "15.95", "16.95", "14.95"]
+
 
 //Allow the user to change the name and address info:
 function changeaddress() {
