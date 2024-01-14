@@ -6,8 +6,6 @@ const carnames = ["Black-Ferrari","Drag-Racer","Bullit-Car","Dragster", "Estate-
 //Create an array of the corresponding prices for each item
 const newvalue= document.getElementById("new");
 
-
-
 //Allow the user to change the name and address info:
 function changeaddress() {
     nm =window.prompt("Enter your full name")
@@ -21,7 +19,7 @@ if ((nm.length >7) && (ad.length>20)) {
 else {
     window.alert("Not a valid name or address");
     return false}
-}
+}//End of function changeaddress
 
 //initialise some variables:
 var quantity=0;
@@ -36,9 +34,9 @@ var rt2dp=0;
 var recordsadded=0;
 contents=[]
 var mycart=0;
+
 //FUNCTION TO ADD A RECORD INSIDE THE CART DISPLAY
 //DISPLAY NAME OF ITEM, REF., QTY AND PRICE
-
 function additem(itemnumber) {
     tlquantity+=1;
   mycart+=1;
@@ -47,7 +45,7 @@ function additem(itemnumber) {
 
     if(buycount-removecount >12) {
         window.alert("Too many items.\nPlease remove some items from the cart")
-    }
+    }// An arbitrary failsafe in place to stop the cart being overloaded
    
    
    count+=1; //count increases by 1 each time an add to cart
@@ -78,7 +76,7 @@ console.log("Price: ",price);//price is a string
     
 //Create a new paragraph Element containing the record to populate innercontainer div inside whitebar2:
 var item = document.createElement('p');
- item.innerHTML=cartitle+'&nbsp&nbsp&nbsp'+'#'+String(itemnumber)+'&nbsp&nbsp&nbsp&nbsp&nbsp'+String(quantity)+'&nbsp&nbsp&nbsp&nbsp'+price+'&nbsp<button style="margin-left:5px" class="removeitem" onclick="removeitem()">Remove</button>';
+ item.innerHTML=cartitle+'&nbsp&nbsp&nbsp'+'#'+String(itemnumber)+'&nbsp&nbsp&nbsp&nbsp&nbsp'+String(quantity)+'&nbsp&nbsp&nbsp&nbsp'+price+'&nbsp<button style="margin-left:5px" class="removeitem" onclick="removeitem()">Remove</button>';//each entry has its own 'Remove'button
 
 //***********GIVE AN ID TO THE NEW RECORD*****************/
 item.setAttribute('id',String(count));//give the record an id
@@ -103,19 +101,17 @@ function updatemycart() {
     //*************at the top left of the cart********/
    document.getElementById("mycart").innerText="My Cart ("+String(mycart)+")";
    
-    //price=parseFloat(price); 
-}
+}//End of function updatemycart()
 
 
 //Function to update the Grand Total at the bottom of the cart*******
 function grandtotal() {
-rt2dp=runningtotal.toFixed(2);
+rt2dp=runningtotal.toFixed(2);//rt2dp is short for runningtotal to 2 decimal places
 
 if(rt2dp<0) {
-    rt2dp=0;
+    rt2dp=0;//cannot be less than 0
 }
-
-
+//rt2dp is a numeric value and must be converted into a string
 document.getElementById("tot").innerText="Total : £"+String(rt2dp);
 console.log(rt2dp);
 if (buycount==removecount) {
@@ -130,27 +126,26 @@ function removeitem () {
  for(let i=0; i<deletebutton.length; i++) {
  deletebutton[i].onclick=function() {
      this.parentNode.remove();
-     mycart-=1;
-     removecount+=1;
+     mycart-=1;//lower the number in the cart by one
+     removecount+=1; 
      console.log(removecount);
-     updatemycart();
-     runningtotal-=parseFloat(price);
-     grandtotal();
+     updatemycart(); //update the number of items in the 'My Cart' title
+     runningtotal-=parseFloat(price); //subtract the price from the running total
+     grandtotal(); //update the total at the bottom of the cart
         }
     }
-}
+}//End of function removeitem()
 
 
 function updatemycart() {
     //update the 'My Cart' qty at top of cart
     document.getElementById("mycart").innerText="My Cart ("+String(mycart)+")";
-}
+}//End of updatemycart()
 
 //if checkout button pressed:
 function checkout() {
     
         window.alert("You have chosen to check out.\n Your shopping cart has a total of £"+rt2dp);
-
-}
+}//End of function checkout();
 
 
