@@ -13,4 +13,5 @@ The problem was that I did not know how to get the price data from the parent el
 For that reason I could not update the grand total at the bottom of the cart unless I calculated for a price which remained the same for all items.  I also did not know how to access and modify
  the quantity figure which was dynamically created inside a parent paragraph containing other data as well.
  I will probably continue working on this project to improve it further.
+ Update 14/1/23 11.03pm : Bug fix - javascript file script.js was changed.
  
