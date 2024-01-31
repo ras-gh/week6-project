@@ -16,4 +16,6 @@ For that reason I could not update the grand total at the bottom of the cart unl
  
  Update 14/1/23 11.03pm : Bug fix - javascript file script.js was changed.
  Update 14/1/23 11.53pm : javascript file script.js was changed - code tidied up.
+
+ Update 31/1/23 : Updated style.css file to make layout more responsive
  
