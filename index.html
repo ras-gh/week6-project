@@ -4,190 +4,191 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      #cart {
+        background-color: rgb(213, 249, 255);
+        margin: 10px;
+        border: lightskyblue solid 4px;
+        border-radius: 10px;
+        width: 300px;
+        height: 360px;
+      }
+      #container {
+        max-width: 1000px;
+        display: flex;
+        justify-content: space-between;
+        border: solid lightskyblue 6px;
+        border-radius: 12px;
+      }
+      #title {
+        max-width: 1000px;
+        height: 40px;
+        margin-bottom: 4px;
+        padding: 0px;
+        border: solid lightskyblue 6px;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      h1 {
+        font-size: 1.5rem;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      }
+      button {
+        font-size: 16px;
+      }
+      .removeitem {
+        margin-left: 0px;
+        font-size: 12px;
+        padding: 1px;
+        background-color: rgb(255, 248, 172);
+        border-color: rgb(0, 0, 0);
+        border-radius: 3px;
+      }
+      #tot {
+        position: absolute;
+        top: 10px;
+        font-size: 16px;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        font-weight: 600;
+      }
+      #totalholder {
+        padding-left: 60px;
+
+        position: relative;
+        background-color: white;
+      }
+      #subtitleholder {
+        position: relative;
+        top: 4px;
+        background-color: white;
+      }
+      #subtitles {
+        background-color: white;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        font-weight: 600;
+        text-decoration: underline;
+        margin-right: 30%;
+        margin-left: 10px;
+        display: flex;
+        justify-content: space-between;
+      }
+      p {
+        margin-left: 10px;
+      }
+      .car {
+        height: 170px;
+        width: 240px;
+        padding: 2px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+        border: solid lightskyblue 4px;
+        border-radius: 10px;
+      }
+      .btn {
+        font-size: 12px;
+        background-color: yellow;
+        position: relative;
+        bottom: 80px;
+        left: 2px;
+        border-radius: 4px;
+      }
+      .name {
+        padding-left: 8px;
+        align-items: center;
+        width: 100px;
+        border: solid black 1px;
+        font-size: 14px;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        border-radius: 20px;
+        position: relative;
+        bottom: 180px;
+        left: 2px;
+        z-index: 3;
+      }
+
+      #imageholder {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
+      #checkout {
+        position: relative;
+      }
+      #btncheckout {
+        position: absolute;
+        top: 70px;
+        right: 10px;
+        background-color: yellow;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        font-size: 14px;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        font-weight: 600;
+        border-radius: 4px;
+      }
+      #incart {
+        margin-top: 20px;
+
+        height: 200px;
+      }
+    </style>
   </head>
   <body>
-    <header>
-      <h1 id="heading">
-         **********SHOPPING CART E-COMMERCE PLATFORM********** 
-      </h1>
-    </header>
+    <div id="title">
+      <h1>BASIC ECOMMERCE SHOPPING CART</h1>
+    </div>
     <div id="container">
-      <!-- START OF PRODUCTS -->
-      <div id="products">
-        <!-- All car items are inside the 'products' div -->
-        <!-- Each car is inside its own 'car' div -->
+      <div id="imageholder">
         <div class="car">
-          <p id="c1" class="cartitle">Black-Ferrari</p>
-          <img src="./images/Black-Ferrari.gif" alt="Black Ferrari" />
-          <!-- The 'carinfo' div holds the price and 'add to cart button' inside each 'car' div -->
-          <div class="carinfo">
-            <p id="p1">£19.95</p>
-            <button id="btn1"  class="buy" onclick="additem(1)">ADD TO CART</button>
-          </div>
+          <img src="Black Ferrari.gif" width="230px" alt="" />
+          <p class="name">Black Ferrari</p>
+          <button id="bf" class="btn" onclick="add(bf)">Add to Cart</button>
+        </div>
+
+        <div class="car">
+          <img src="Blue Dragster.gif" width="230px" alt="" />
+          <p class="name">Blue Dragster</p>
+          <button class="btn" id="bd" onclick="add(bd)">Add to Cart</button>
         </div>
         <div class="car">
-          <p id="c2" class="cartitle">Blue-Dragster</p>
-          <img src="./images/Blue-Drag-Racer.gif" alt="" />
-          <div class="carinfo">
-            <p id="p2">£19.95</p>
-            <button id="btn2" class="buy" onclick="additem(2)" >ADD TO CART</button>
-          </div>
+          <img src="Red Dragster.gif" width="230px" alt="" />
+          <p class="name">Red Dragster</p>
+          <button class="btn" id="rd" onclick="add(rd)">Add to Cart</button>
         </div>
         <div class="car">
-          <p id="c3" class="cartitle">Bullit-Engine-</p>
-          <img src="./images/Bullit-Car.gif" alt="Bullit-Car" />
-          <div class="carinfo">
-            <p id="p3">£19.95</p>
-            <button id="btn3"  class="buy" onclick="additem(3)">ADD TO CART</button>
-          </div>
-        </div>
-        <div class="car">
-          <p id="c4" class="cartitle">Red-Dragster</p>
-          <img src="./images/Dragster.gif" alt="" />
-          <div class="carinfo">
-            <p id="p4">£19.95</p>
-            <button id="btn4"  class="buy" onclick="additem(4)">ADD TO CART</button>
-          </div>
-        </div>
-        <div class="car">
-          <p id="c5" class="cartitle">Estate-Mobile</p>
-          <img src="./images/Estate-Mobile.gif" alt="" />
-          <div class="carinfo">
-            <p id="p5">£19.95</p>
-            <button id="btn5"  class="buy" onclick="additem(5)">ADD TO CART</button>
-          </div>
-        </div>
-        <div class="car">
-          <p id="c6" class="cartitle">Red Firecat-</p>
-          <img src="./images/Firecat.gif" alt="" />
-          <div class="carinfo">
-            <p id="p6">£19.95</p>
-            <button id="btn6"  class="buy" onclick="additem(6)">ADD TO CART</button>
-          </div>
-        </div>
-        <div class="car">
-          <p id="c7" class="cartitle">Green-Racer-</p>
-          <img src="./images/Green-Racer.gif" alt="" />
-          <div class="carinfo">
-            <p id="p7">£19.95</p>
-            <button id="btn7"  class="buy" onclick="additem(7)">ADD TO CART</button>
-          </div>
-        </div>
-        <div class="car">
-          <p id="c8" class="cartitle">Gold-Dragster</p>
-          <img src="./images/Hot-Rod.gif" alt="" />
-          <div class="carinfo">
-            <p id="p8">£19.95</p>
-            <button id="btn8"  class="buy" onclick="additem(8)">ADD TO CART</button>
-          </div>
-        </div>
-        <div class="car">
-          <p id="c9" class="cartitle">Blue-Machine</p>
-          <img src="./images/Ice-Blue.gif" alt="" />
-          <div class="carinfo">
-            <p id="p9">£19.95</p>
-            <button id="btn9"  class="buy" onclick="additem(9)">ADD TO CART</button>
-          </div>
-        </div>
-        <div class="car">
-          <p id="c10" class="cartitle">Off-Roader-- </p>
-          <img src="./images/Off-Roader.gif" alt="" />
-          <div class="carinfo">
-            <p id="p10" >£19.95</p>
-            <button id="btn10"  class="buy" onclick="additem(10)">ADD TO CART</button>
-          </div>
-        </div>
-        <div class="car">
-          
-          <p id="c11" class="cartitle">Pickup-Truck</p>
-          <img src="./images/Pickup-Truck.gif" alt="" />
-          <div class="carinfo">
-            <p id="p11">£19.95</p>
-            <button id="btn11"  class="buy" onclick="additem(11)">ADD TO CART</button>
-          </div>
-        </div>
-        <div class="car">
-          <p id="c12" class="cartitle">Red-Torpedo</p>
-          <img src="./images/Red-Torpedo.gif" alt="" />
-          <div class="carinfo">
-            <p id="p12">£19.95</p>
-            <button id="btn12"  class="buy" onclick="additem(12)">ADD TO CART</button>
-          </div>
-        </div>
-        <div class="car">
-          <p id="c13" class="cartitle">Sedan-Racer</p>
-          <img src="./images/Sedan-Racer.gif" alt="" />
-          <div class="carinfo">
-            <p id="p13">£19.95</p>
-            <button id="btn13"  class="buy" onclick="additem(13)">ADD TO CART</button>
-          </div>
-        </div>
-        <div class="car">
-          <p id="c14" class="cartitle">Silver-Sport-</p>
-          <img src="./images/Silver-sports-car.gif" alt="" />
-          <div class="carinfo">
-            <p id="p14">£19.95</p>
-            <button id="btn14" class="buy" onclick="additem(14)" >ADD TO CART</button>
-          </div>
-        </div>
-        <div class="car">
-          <p id="c15" class="cartitle">Yellow-Truck</p>
-          <img src="./images/Yellow-Fire-Truck.gif" alt="" />
-          <div class="carinfo">
-            <p id="p15">£19.95</p>
-            <button id="btn15" class="buy" onclick="additem(15)" >ADD TO CART</button>
-          </div>
+          <img src="Bullit Engine.gif" width="230px" alt="" />
+          <p class="name">Bullit Engine</p>
+          <button class="btn" id="be" onclick="add(be)">Add to Cart</button>
         </div>
       </div>
-      <!-- END OF PRODUCTS  -->
-
-      <!-- START OF SHOPPING CART INTERFACE -->
-      <div id="cart">
-        <div id="topbar">
-          <img id="arrow" src="./images/left-arrow.png" alt="" />
-          <p id="mycart">My Cart</p>
+      <div>
+        <div id="cart" width="80%" border="black solid 4px">
+          <div id="subtitleholder">
+            <p id="subtitles">
+              <span>QTY</span><span>ITEM</span><span>PRICE</span>
+            </p>
+          </div>
+          <div id="incart"></div>
+          <div id="totalholder">
+            <p id="tot">GRAND TOTAL</p>
+          </div>
+          <div id="checkout">
+            <button id="btncheckout" onclick="checkout()">CHECKOUT</button>
+          </div>
         </div>
-        <button id=new value="18.55" style="visibility:hidden">TEST BUTTON</button>
-      
-        <div id="whitebar1">
-          <p id="address">
-            Deliver to: John Denver, 353 Connecticut Way, Denver, CO 232933
-          </p>
-          <button id="change" onclick="changeaddress()">Change</button>
-          
-        </div>
-        <div id="whitebar2">
-         
-          <div id="subtitles">
-          <div>Item&nbsp&nbsp&nbsp</div><div>Ref.</div><div>&nbspQty</div><div>Price</div>
-           
-          </div><!-- End of subtitles <div>-->
-            <div id="innercontainer">
 
-              
-              
-            </div>
-  <!-- <button id="removelastitem" onclick="removeitem()">Remove Last Item
-  </button> -->
-          <p id="msg"></p>
-        </div>
-           <!--END OF whitebar1 container--  -->
-
-         
-        <div id="bottomcontainer">
-       
-        <div>
-
-<!-- ****************************************** -->
-<!-- Define a Total Cost holder and a Checkout button -->
-<p id="tot">Total :</p>
-<button id="btncheckout" onclick="checkout()">Checkout</button>
-<!-- ******************************************* --> 
+        <p></p>
       </div>
-
-    </div>      
-    <!-- END OF CONTAINER -->
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
