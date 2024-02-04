@@ -1,151 +1,218 @@
 
-// Shopping cart project by R.A.Smith
+let cars = [
+    ["Black Ferrari", "bf",78,"19.95"],
+    ["Blue Dragster", "bd", 65, "15.95"],
+    ["Red Dragster", "rd", 70, "17.95"],
+    ["Bullit Engine", "be", 55, "25.95"]
+];
 
-//Create an array of the names of items for sale
-const carnames = ["Black-Ferrari","Drag-Racer","Bullit-Car","Dragster", "Estate-Mobile", "Firecat", "Green-Racer", "Hot Rod", "Ice Blue", "Off-Roader","Pickup-Truck", "Red-Torpedo", "Sedan-Racer", "Silver-Sport", "Fire-Truck"]
-//Create an array of the corresponding prices for each item
-const newvalue= document.getElementById("new");
+const price= [19.95, 15.95, 17.95, 25.95];
+var item=document.createElement('div');
 
-//Allow the user to change the name and address info:
-function changeaddress() {
-    nm =window.prompt("Enter your full name")
-    ad = window.prompt("Enter your address")
-    console.log(nm);
-    console.log(ad);
-    if (nm ==null) {return false}
-if ((nm.length >7) && (ad.length>20)) {
-    document.getElementById("address").innerText = "Deliver to: "+nm+","+ad;
+item.style.backgroundColor="yellow";
+document.getElementById("cart").appendChild(item);
+var qtybf=1;
+var qtybd=1;
+var qtyrd=1;
+var qtybe=1;
+var inlist=[];//inlist will keep track of what records exist in the cart
+var total=0;
+var total2dp=0;//total to 2 decimal places
+
+function updatetotal() {
+    total2dp=total.toFixed(2);
+    if (String(total2dp)=="-0.00") {
+        (total2dp)=0.00;
+    }
+    console.log(total2dp);
+    document.getElementById("tot").innerText="GRAND TOTAL £"+String(total2dp);
+  
+}//End of function updatetotal()
+
+function add(name) {
+    switch(name) {
+        case bf:
+            if (inlist.includes("bf")) {//only execute the contents
+                // of this 'if' statement if a record already exists
+                qtybf+=1; //increase qty by 1
+                record=document.getElementById("0");//access the existing record
+                //keep the record in place, but update its contents
+                //get the item name and the price from 
+                //the cars array
+                record.innerHTML=qtybf+'..........'+cars[0][0]+'......£'+cars[0][3]+'.....'+'<button style="margin-left:5px" class="removeitem" id=0 onclick="removeitem(0)">Remove</button>'
+                record.style.fontSize="16px";
+                //with an updated qty
+               
+                //we only want the qty to change, not add another record
+                //so that is why we delete the existing record then
+                //add the record back in, with qty updated
+                total+=Number(cars[0][3]);
+                updatetotal();
+                return;
+            }
+            var item=document.createElement('p');
+    item.setAttribute('id',0)
+    item.innerHTML=qtybf+'..........'+cars[0][0]+'......£'+cars[0][3]+'.....'+'<button style="margin-left:5px" class="removeitem" id=0 onclick="removeitem(0)">Remove</button>'
+    item.style.fontSize="16px";
+    document.getElementById("incart").appendChild(item);
+    if (!inlist.includes("bf")){//only execute the push if there is no
+        //existing record 
+    inlist.push("bf");
+        }
+    total+=Number(cars[0][3]);//get the price from the array
+    updatetotal();
+    break;
+
+        case bd:
+            if (inlist.includes("bd")) {
+                qtybd+=1;
+                record=document.getElementById("1");
+                record.innerHTML=qtybd+'..........'+cars[1][0]+'.....£'+cars[1][3]+'.....'+'<button style="margin-left:5px" class="removeitem" id=1 onclick="removeitem(1)">Remove</button>'
+                record.style.fontSize="16px";
+                total+=Number(cars[1][3]);
+                updatetotal();
+                return;
+            }
+
+            var item=document.createElement('p');
+item.setAttribute('id',1)
+item.innerHTML=qtybd+'..........'+cars[1][0]+'.....£'+cars[1][3]+'.....'+'<button style="margin-left:5px" class="removeitem" id=1 onclick="removeitem(1)">Remove</button>'
+item.style.fontSize="16px";
+document.getElementById("incart").appendChild(item);
+if (!inlist.includes("bd")) {//if there is no existing record
+    //then push
+        inlist.push("bd");
+    }
+        total+=Number(cars[1][3]);
+        updatetotal();
+        break;
+
+        case rd:
+            if (inlist.includes("rd")) {
+                qtyrd+=1;
+                record=document.getElementById("2");
+                record.innerHTML=qtyrd+'..........'+cars[2][0]+'......£'+cars[2][3]+'.....'+'<button style="margin-left:5px" class="removeitem" id=2 onclick="removeitem(2)">Remove</button>'
+                record.style.fontSize="16px";
+                total+=Number(cars[2][3]);
+                updatetotal();
+                return;
+            }
+
+            var item=document.createElement('p');
+item.setAttribute('id',2)
+item.innerHTML=qtyrd+'..........'+cars[2][0]+'......£'+cars[2][3]+'.....'+'<button style="margin-left:5px" class="removeitem" id=2 onclick="removeitem(2)">Remove</button>'
+item.style.fontSize="16px";
+document.getElementById("incart").appendChild(item);
+if (!inlist.includes("rd")) {
+        inlist.push("rd");
+    }
+        total+=Number(cars[2][3]);
+        updatetotal();
+        break;
+
+        case be:
+            if (inlist.includes("be")) {
+                qtybe+=1;
+                record=document.getElementById("3");
+                record.innerHTML=qtybe+'..........'+cars[3][0]+'......£'+cars[3][3]+'.....'+'<button style="margin-left:5px" class="removeitem" id=3 onclick="removeitem(3)">Remove</button>'
+                record.style.fontSize="16px";
+                total+=Number(cars[3][3]);
+                updatetotal();
+                return;
+            }
+           
+            var item=document.createElement('p');
+item.setAttribute('id',3)
+item.innerHTML=qtybe+'..........'+cars[3][0]+'......£'+cars[3][3]+'.....'+'<button style="margin-left:5px" class="removeitem" id=3 onclick="removeitem(3)">Remove</button>'
+item.style.fontSize="16px";
+document.getElementById("incart").appendChild(item);
+if(!inlist.includes("be")) {
+        inlist.push("be");
+    }
+        total+=Number(cars[3][3]);
+        updatetotal();
+        break;
+
+
+    }
+       console.log(inlist);
 }
-else {
-    window.alert("Not a valid name or address");
-    return false}
-}//End of function changeaddress
 
-//initialise some variables:
-var quantity=0;
-var price="0";
-var runningtotal=0;
-var count=0;
-var buycount=0;
-var removecount=0;
-var tlquantity=0;
-var subtractamount=0;
-var rt2dp=0;
-var recordsadded=0;
-contents=[]
-var mycart=0;
-
-//FUNCTION TO ADD A RECORD INSIDE THE CART DISPLAY
-//DISPLAY NAME OF ITEM, REF., QTY AND PRICE
-function additem(itemnumber) {
-    tlquantity+=1;
-  mycart+=1;
-    updatemycart();
-    buycount+=1;//count how many times a buy button is pressed
-
-    if(buycount-removecount >12) {
-        window.alert("Too many items.\nPlease remove some items from the cart")
-    }// An arbitrary failsafe in place to stop the cart being overloaded
-   
-   
-   count+=1; //count increases by 1 each time an add to cart
-   //button is clicked.
-//convert quantity to integer:
-quantity=parseInt(quantity);
-quantity=1;
-    var q = "qtyholder";
-    q+=itemnumber;
-    var a="p";
-    var b="c";
-   //itemnumber is a numerical value
-    a=a+itemnumber;//itemnumber gets interpreted as a string
-    b=b+itemnumber;// "          ""       " "        "  
-   
-    //The string literal '${a}' equates to p1...p15 (15 items)
-    //to extract the item price from the innerText of the div with ID
-    //of p1 or p2 or p3...p15
-    //Eg Item p1 is price of Black Ferrari (£19.95)
-    price=document.getElementById(`${a}`).innerText;
-price=price.slice(1);//This gets rid of £ in front of price
-console.log("Price: ",price);//price is a string
-
- //The string literal ${b} equates to c1..c15 to extract the
-    //car name from the innerText of the div with ID c1....c15
-    //Eg Item c1 is the Black Ferrari
-    cartitle=document.getElementById(`${b}`).innerText;
+function removeitem(itemnumber) {
+    record=document.getElementById(itemnumber);//select the record
+    //according to its Id
+    //find out what the record contains before it is deleted
+    text=record.innerText;//store the contents of the record in text variable
+    console.log(text);
+    console.log(inlist);
+    console.log(qtybf);
+    //Below is a useful loop to cycle through the list to find 
+    //the index of where a name value is located. Once we have the
+    //index value, we can delete that value from the list using splice method.
+    if (text.includes("Ferrari")) {
+        
+        for( var i = 0; i < inlist.length; i++){ 
     
-//Create a new paragraph Element containing the record to populate innercontainer div inside whitebar2:
-var item = document.createElement('p');
- item.innerHTML=cartitle+'&nbsp&nbsp&nbsp'+'#'+String(itemnumber)+'&nbsp&nbsp&nbsp&nbsp&nbsp'+String(quantity)+'&nbsp&nbsp&nbsp&nbsp'+price+'&nbsp<button style="margin-left:5px" class="removeitem" onclick="removeitem()">Remove</button>';//each entry has its own 'Remove'button
-
-//***********GIVE AN ID TO THE NEW RECORD*****************/
-item.setAttribute('id',String(count));//give the record an id
-item.setAttribute('class', 'spacep')
-//***************IMPORTANT*********************************/
-//Populate the cart with the record*******************
-document.getElementById("innercontainer").appendChild(item);
-//*********************************************************/
-var itemnumberstring=String(count);
-   id=document.getElementById(itemnumberstring);
-
-    quantity=String(quantity);//convert quantity 
-    //back into a string
-    console.log("price is:"+price);
-    runningtotal+=parseFloat(price);
-grandtotal();
-
-} //End of function additem()
-
-function updatemycart() {
-    //*************Update the 'My Cart' entry********** 
-    //*************at the top left of the cart********/
-   document.getElementById("mycart").innerText="My Cart ("+String(mycart)+")";
-   
-}//End of function updatemycart()
-
-
-//Function to update the Grand Total at the bottom of the cart*******
-function grandtotal() {
-rt2dp=runningtotal.toFixed(2);//rt2dp is short for runningtotal to 2 decimal places
-
-if(rt2dp<0) {
-    rt2dp=0;//cannot be less than 0
-}
-//rt2dp is a numeric value and must be converted into a string
-document.getElementById("tot").innerText="Total : £"+String(rt2dp);
-console.log(rt2dp);
-if (buycount==removecount) {
-    document.getElementById("tot").innerText="Total : £0";
-}
-}//End of function grandtotal
- 
-
-function removeitem () {
-   
-    let deletebutton=document.querySelectorAll('.removeitem');
- for(let i=0; i<deletebutton.length; i++) {
- deletebutton[i].onclick=function() {
-     this.parentNode.remove();
-     mycart-=1;//lower the number in the cart by one
-     removecount+=1; 
-     console.log(removecount);
-     updatemycart(); //update the number of items in the 'My Cart' title
-     runningtotal-=parseFloat(price); //subtract the price from the running total
-     grandtotal(); //update the total at the bottom of the cart
+            if ( inlist[i] == "bf") { 
+        
+                inlist.splice(i, 1); //deletes the record from inlist
+                console.log("splice done");
+                console.log(inlist);
+                total-=19.95*qtybf;//remove the correct amount
+                //according to qty
+                updatetotal();//the price*qty is subtracted from the total
+                qtybf=1;//must be reset back to 1 or it will hold a previous
+                //value which should have disappeared when record is deleted
+            }
         }
     }
+    if (text.includes("Blue")) {
+        for( var i = 0; i < inlist.length; i++){ 
+    
+            if ( inlist[i] == "bd") { 
+        
+                inlist.splice(i, 1); //deletes the record from inlist
+                console.log("bd should have been deleted ",inlist);
+                total-=15.95*qtybd;
+                updatetotal();
+                qtybd=1;
+            }
+        }
+    }
+    if (text.includes("Red")) {
+        for( var i = 0; i < inlist.length; i++){ 
+    
+            if ( inlist[i] == "rd") { 
+        
+                inlist.splice(i, 1); //deletes the record from inlist
+                console.log(inlist);
+                total-=17.95*qtyrd;
+                updatetotal();
+                qtyrd=1;
+            }
+        }
+    }
+
+    if (text.includes("Bullit")) {
+        for( var i = 0; i < inlist.length; i++){ 
+    
+            if ( inlist[i] == "be") { 
+        
+                inlist.splice(i, 1); //deletes the record from inlist
+                console.log(inlist);
+                total-=25.95*qtybe;
+                updatetotal();
+                qtybe=1;
+            }
+        }
+    }
+
+record.remove()
+console.log("inlist now contains ",inlist);
+//the record will be removed according to its itemnumber
+//this was defined at the beginning of the function
 }//End of function removeitem()
 
-
-function updatemycart() {
-    //update the 'My Cart' qty at top of cart
-    document.getElementById("mycart").innerText="My Cart ("+String(mycart)+")";
-}//End of updatemycart()
-
-//if checkout button pressed:
 function checkout() {
-    
-        window.alert("You have chosen to check out.\n Your shopping cart has a total of £"+rt2dp);
-}//End of function checkout();
-
-
+    window.alert("You have chosen to checkout.\nThe total to be paid is: £"+String(total2dp));
+}
