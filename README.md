@@ -21,5 +21,5 @@ For that reason I could not update the grand total at the bottom of the cart unl
 
  Update 4/2/24 : Improved javascript to handle multiple prices and be able to update individual
  quantities of items being displayed inside the cart. The records are now modified to instantly 
- show an update to each quantity without having to delete the record in its entirety.
+ show an update to each quantity without having to delete the record in its entirety before re-displaying it.
  
