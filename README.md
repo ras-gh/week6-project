@@ -18,4 +18,8 @@ For that reason I could not update the grand total at the bottom of the cart unl
  Update 14/1/23 11.53pm : javascript file script.js was changed - code tidied up.
 
  Update 31/1/23 : Updated style.css file to make layout more responsive
+
+ Update 4/2/24 : Improved javascript to handle multiple prices and be able to update individual
+ quantities of items being displayed inside the cart. The records are now modified to instantly 
+ show an update to each quantity without having to delete the record in its entirety.
  
